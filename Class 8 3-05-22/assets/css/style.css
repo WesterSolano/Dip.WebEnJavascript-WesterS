@@ -1,0 +1,40 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+    color: #001C55;
+}
+
+h1,h3{
+    text-transform: uppercase;
+
+   /* font-size: 32px;
+    text-align: center;*/
+}
+
+p{
+    margin: 0 auto;
+
+}
+
+.contenedor{
+    display: flex;
+    width: 595px;
+    height: 842px;
+    margin: 0 auto;
+    background-color: E9F1F7;
+}
+
+.avator{
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.seccion1{
+    width: 35%;
+}
+
+.seccion2{
+    width: 65%;
+}

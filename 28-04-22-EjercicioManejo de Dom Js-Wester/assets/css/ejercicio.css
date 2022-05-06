@@ -1,0 +1,18 @@
+#caja{
+    border-width: 3pm;
+    border-style: solid;
+    border-color: transparent;
+    width: 390px;
+    height: 350px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /* color: black; */
+}
+
+.contenedor{
+    /*align-content: center;*/
+    text-align: center;
+    background-color: antiquewhite;
+}
