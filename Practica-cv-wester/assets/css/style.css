@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Oleo+Script+Swash+Caps:wght@400;700&display=swap');
+
+body{
+    /*margin: 0%;
+    padding: 0%;*/
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #001C55;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+}
+
+h1{
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+h1,h3{
+    text-transform: uppercase;
+    /*font-size: 32px;
+    text-align: center;*/
+}
+
+
+h3{
+    letter-spacing: 4px;
+    position: relative;
+}
+
+h3::before{
+    content: '';
+    width: 60px;
+    height: 5px;
+    display: block;
+    background-color: #001C55;
+    position: absolute;
+    bottom: -10px;
+}
+
+p{
+    margin: 0 auto;
+    margin-top: 15px;
+    text-align: left;
+}
+
+ul,li{
+    padding: 0;
+    margin: 8px;
+}
+
+article{
+    margin: 8px auto;
+    min-height: 150px;
+}
+
+.contenedor{
+    display: flex;
+    width: 595px;
+    min-height: 842px;
+    margin: 0 auto;
+    background-color: silver;
+    outline: rgba(126, 67, 67, 0.537) 20px;
+}
+
+.section1{
+    width: 35%;
+}
+
+.section2{
+    width: 65%;
+    background-color: #BAAC02;
+}
+
+
+.section1, .section2{
+    padding: 25px;
+}
+
+.avatar{
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.parrafo-perfil{
+    text-align: center;
+}
+
+.listado-contacto{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.parrafo-profesion{
+    font-size: 18px;
+    text-align: center;
+    font-style: oblique;
+}
+
+.display-flex{
+    display: flex;
+}
+
+.icono-lista{
+    margin-right: 10px;
+}
+
+.listado-experienciaLab{
+    list-style-type: square;
+    padding: 0;
+    margin-top: 0;
+}
+
+.negrita{
+    font-weight: bold;
+}
