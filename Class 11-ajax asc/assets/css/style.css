@@ -1,0 +1,21 @@
+/*.space-ground{
+    justify-content: space-around;
+}*/
+
+.listadoContenedor{
+    margin: 16px auto;
+    width: 80vw;
+    min-height: 300px;
+    display: flex;
+    /*border: solid 2px;*/
+    flex-wrap: wrap;
+}
+
+.post{
+    min-width: 300px;
+    min-height: 50px;
+    border-radius: 5px;
+    margin: 8px;
+    padding: 8px;
+    box-shadow: 7px 1px 1px #cccc;
+}

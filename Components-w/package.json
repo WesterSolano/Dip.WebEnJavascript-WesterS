@@ -1,0 +1,20 @@
+{
+  "name": "components-w",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "web-dev-server --node-resolve --open --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@web/dev-server": "^0.1.31"
+  },
+  "dependencies": {
+    "@dile/dile-menu-hamburger": "^2.0.2",
+    "@dile/dile-nav": "^0.1.2"
+  }
+}

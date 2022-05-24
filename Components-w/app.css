@@ -1,0 +1,25 @@
+body{
+    background-color: #dba1a1;
+    padding: 0;
+    margin: 0;
+    font-family: Robot, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+}
+
+dile-nav img{
+    height: 1.8rem;
+    margin-right: 0.5rem;
+}
+
+dile-menu-hamburger nav{
+    padding: 1rem;
+}

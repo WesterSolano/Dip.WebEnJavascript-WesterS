@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script d src="js/editar-cliente.js"></script>
+    <link rel="stylesheet" href="bootstrap\dist\css\bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Proyecto Clientes</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="clientes">Clientes</a>
+              </li>              
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="row">
+            <article class="col">
+                <div class="card" style="width: 25rem;">
+                    <img src="images/compute.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Formulario de clientes:</h5>
+                      <form id="cliente-form">
+                        <div class="input-group mb-3">
+                            <span for="disabledTextInput" class="input-group-text">Id Cliente</span>
+                            <input type="text" id="disabledTextInput" name="id" class="form-control" placeholder="0">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Nombre</span>
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre" aria-label="nombre" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Direccion</label>
+                            <textarea class="form-control" name="direccion" id="direccion" placeholder="Dir. ejmp. C #3, el Portal. D.N."></textarea>
+                          </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email</label>
+                          <input type="email" id="correo" name="correo" class="form-control" placeholder="tu@dom.com">
+                          <div id="correo" name="correo" class="form-text" >Nunca compartiremos tu direccion de correo con nadie.</div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <span for="ip" class="input-group-text" id="basic-addon1">Dir. IP.</span>
+                          <input type="text" class="form-control" id="ip" name="ip" placeholder="00.00.000.000">
+                        </div>                       
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                      </form>
+                    </div>
+                  </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
