@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Proyecto Clientes</a>
+          <a class="navbar-brand" href="#">CRM Clientes</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
           aria-expanded="false" aria-label="Toggle navigation">
@@ -27,8 +27,8 @@
               </li>              
             </ul>
             <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <input class="form-control me-2" type="search" placeholder="Escribe para filtrar..." aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Filtrar</button>
             </form>
           </div>
         </div>
@@ -40,11 +40,18 @@
                 <div class="card" style="width: 50rem;">
                     <img src="images/customers.png" id="customerImg" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title">Formulario de clientes:</h5>
+                      
+                      <br><br>
+                      <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Escribe para filtrar..." aria-label="Search">
+                        <button class="btn btn-outline-success" name="btnBuscar" value="btnBuscar" id="btnBuscar" type="submit">Buscar</button>
+                      </form>
+                      <br>
+                      <h5 class="card-title">Datos del cliente:</h5>
                       <form id="cliente-form">
                         <div class="input-group mb-3">
                             <span for="disabledTextInput" class="input-group-text">Id Cliente:</span>
-                            <input type="text" id="disabledTextInput" name="id" class="form-control" placeholder="0">
+                            <input type="text" id="disabledTextInput" name="id" class="form-control" placeholder="0" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Nombre:</span>
@@ -54,17 +61,15 @@
                             <span class="input-group-text" id="basic-addon1">Apellido:</span>
                             <input type="text" class="form-control" name="apellido" placeholder="Apellido" aria-label="apellido" aria-describedby="basic-addon1">
                         </div>
-                        <div class="mb-3">
+                        <div class="form-check">
                             <label for="exampleInputEmail1" class="form-label">Sexo:</label>
                             <br>
-                            <input class="form-check-input" type="radio" name="sexo" id="hombre" checked>
+                            <input class="form-check-input" type="radio" name="sexo" value="Hombre" id="flexRadioDefault1" checked>
                             <label class="form-check-label" for="flexRadioDefault1">Hombre</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="sexo" id="mujer">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                              Mujer
-                            </label>
+                            <input class="form-check-input" type="radio" name="sexo" value="Mujer" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">Mujer</label>
                         </div>
                         <br>
                         <div class="mb-3">
