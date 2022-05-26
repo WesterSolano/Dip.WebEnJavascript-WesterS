@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap\dist\css\bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/editar-cliente.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">CRM Clientes</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="clientes">Clientes</a>
+              </li>              
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Escribe para filtrar..." aria-label="Search">
+              <button class="btn btn-outline-success" type="button">Filtrar</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="row">
+            <article class="col">
+                <div class="card" style="width: 50rem;">
+                    <img src="images/customers.png" id="customerImg" class="card-img-top" alt="...">
+                    <div class="card-body">                      
+                      <br><br>
+                      <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Escribe para filtrar..." aria-label="Search">
+                        <button class="btn btn-outline-success" name="btnBuscar" value="btnBuscar" id="btnBuscar" type="button">Buscar</button>
+                      </form>
+                      <br>
+                      <h5 class="card-title">Datos del cliente:</h5>
+                      <form id="cliente-form">
+                        <div class="input-group mb-3">
+                            <span for="disabledTextInput" class="input-group-text">Id Cliente:</span>
+                            <input type="text" id="disabledTextInput" name="id" class="form-control" placeholder="0" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Nombre:</span>
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre" aria-label="nombre" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Apellido:</span>
+                            <input type="text" class="form-control" name="apellido" placeholder="Apellido" aria-label="apellido" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email:</label>
+                            <input type="email" id="correo" name="correo" class="form-control" placeholder="tu@dom.com">
+                            <div id="correo" name="correo" class="form-text" >Nunca compartiremos tu direccion de correo con nadie.</div>
+                          </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Direccion:</label>
+                            <textarea class="form-control" name="direccion" id="direccion" placeholder="Dir. ejmp. C #3, el Portal. D.N."></textarea>
+                        </div>                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">                      
+                            <button type="submit" class="btn btn-success me-md-3">Salvar</button>
+                            <button type="button" class="btn btn-outline-primary">
+                                Actualizar <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"></span>
+                            </button>                            
+                            <button type="button" class="btn btn-outline-danger">
+                                Borrar <svg width="1em" height="1em" viewBox="0 0 16 16" class="position-absolute top-100 start-50 translate-middle mt-1" fill="#212529"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+                            </button>
+                        </div>  
+                      </form>
+                    </div>
+                  </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
