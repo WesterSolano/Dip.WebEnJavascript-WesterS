@@ -2,19 +2,98 @@ let url = 'http://localhost:3000/customers';
 const customerForm = document.querySelector("#cliente-form");
 
 $(document).ready(function () {
-    GetAllCustomers()
+    getAllCustomers()
 
     $('#exampleModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
+
+        var elementId = button.attr("id");
+        const btnUpdate = document.getElementById("btnSubmit");
+
+        if (elementId === "btnNewCustomer") {
+            console.log("Nuevo cliente")
+            btnUpdate.value = "new"
+            clearFormModal()
+
+        }
+        else if (elementId === "btnUpdate") {
+
+            btnUpdate.value = "update"
+            clearFormModal()
+
+            //load data of customer into Form
+            var customerId = button.data('whatever')
+
+            console.log("Modificando cliente " + customerId)
+
+            //Populate customer edit Form
+            getCustomerById(userId)
+        }
+
     })
 
-   /* $("#btnUpdate").on('click', function () {
+    const btnUpdate = document.getElementById("btnSubmit");
+    btnUpdate.addEventListener("click", function () 
+    {
+        let action = btnUpdate.value;
 
-        updateCustomer()
-    })*/
+        const customerId = document.getElementById("id").value
+        const firtName = document.getElementById("nombre").value
+        const lastName = document.getElementById("apellido").value
+        const email = document.getElementById("correo").value
+        const customerAddress = document.getElementById("direccion").value
+
+
+        if (action === "update") {
+
+            //Create object here...
+            const customer = {
+                id: customerId,
+                nombre: firtName,
+                apellido: lastName,
+                correo: email,
+                direccion: customerAddress
+            }
+            console.log("Update customer Object:")
+            console.log(customer)
+
+            //Call update here...
+            updateCustomer(customer)
+
+            //Refresh List
+            
+            getAllCustomers()
+
+            $('#exampleModal').modal('toggle');
+
+        }
+        /*else if (action === "new") {
+            //Call new here...
+            //Create object here...
+
+            if (firtName && lastName && email) {
+                const customer = {
+                    nombre: firtName,
+                    apellido: lastName,
+                    correo: email
+                }
+                saveCustomer(customer) //--to be checked----
+                getAllCustomers();
+                $('#exampleModal').modal('toggle');
+            }
+            else {
+                
+               alert("Fields are null or empty")
+
+            }
+        }*/
+    })
+    
+
+
 })
 
-function GetAllCustomers() {
+function getAllCustomers() {
     CallApi(url, "GET", {}).then(promiseCustomers => {
         promiseCustomers.forEach(customers => {
             //$('#customerTable1 tr[class=autoRow]').remove()
@@ -38,19 +117,44 @@ function GetAllCustomers() {
             const btnDelete = document.getElementById(`btnDelete${customers.id}`);
             console.log(btnDelete)
             deleteCustomer(btnDelete, customers.id);
-
-            //updating a customer data
-            const btnUpdate = document.getElementById(`btnUpdate${customers.id}`);
-            console.log(btnUpdate)
-            //btnUpdate.addEventListener("click", updateCustomer())
-            //updateCustomer(btnUpdate,customers.id);
-
-
         });
 
 
     });
 }
+
+
+function getCustomerById(id) 
+{
+    CallApi(`${url}/${id}`, "GET", {}).then(customerPromise => {
+        console.log(customerPromise)
+
+        /*let userId = customerPromise.id
+        let name = customerPromise.firtName
+        let userName = customerPromise.lastName
+        let PassWord = customerPromise.email
+        let Role = customerPromise.customerAddress*/
+
+        document.getElementById("id").value = customerPromise.id;
+        document.getElementById("nombre").value = customerPromise.firtName;
+        document.getElementById("apellido").value = customerPromise.lastName;
+        document.getElementById("correo").value = customerPromise.email;
+        document.getElementById("direccion").value = customerPromise.customerAddress;
+
+
+    }).catch(function (e) {
+        console.log(e);
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Cliente no encontrado.',
+            text: `El cliente id ${id} no fue encontrado.`,
+            footer: 'Favor validar su conexion a internet.'
+        })
+    });
+
+}
+
 
 
 function deleteCustomer(button, customerId) {
@@ -78,11 +182,6 @@ function deleteCustomer(button, customerId) {
 
                 }
             })
-
-        /*if(confirm(`Desea borrar el cliente ${customerId}?`)) {
-            CallApi(`${url}/${customerId}`, "DELETE", {})
-            .then( ()=> window.location.reload())
-        }*/
     })
 }
 
@@ -113,10 +212,9 @@ function saveCustomer(event)
 
             }
         })
-
 }
 
-function updateCustomer()
+/*function updateCustomer1()
 {
     window.addEventListener("load", event=> {
         const id = getParam("id");
@@ -130,24 +228,17 @@ function updateCustomer()
             clienteForm.elements["direccion"].value = cliente.customerAddress
         })
     })
+}*/
 
-    /*swal({
-        title: "Cliente actualizado!",
-        text: "El cliente: " + cliente.firtName +" fue actualizado Exitosamente!",
-        icon: "success",
+function updateCustomer(customer) {
+    //let url = `http://localhost:3000/customers/${customer.id}`
+
+    CallApi(`${url}/${customer.id}`, "PUT", customer).then(prom => {
+        console.log(prom)
     })
-        .then((willDelete) => {
-            if (willDelete) {
-
-                CallApi(url,"PUT",cliente)
-                
-            } else {
-
-            }
-        })*/
 }
 
-function cleanForm(event){
+function clearFormModal(event){
     const inputs = event.target.elements
     inputs["nombre"].value ="",
     inputs["apellido"].value =null,
@@ -157,7 +248,7 @@ function cleanForm(event){
 
 //Save customer in button click
 customerForm.addEventListener("submit",saveCustomer)
-customerForm.addEventListener("submit",cleanForm)
+customerForm.addEventListener("submit",clearFormModal)
 
 
 function CallApi(url, method, data) {

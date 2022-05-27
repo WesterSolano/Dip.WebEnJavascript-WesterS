@@ -10,6 +10,7 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/customerTable.css">
+    <link rel="stylesheet" href="css/style.css">
     <script defer src="js/listado-clientes.js"></script>
     <title>Clientes</title>
 </head>
@@ -40,18 +41,13 @@
             </div>
         </div>
     </nav>
-    
+    <img src="images/customers.png" id="customerImg" class="card-img-top" alt="...">
     <div style="background-color: #FFFF">
         <br>
         <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-primary" id="btnNewUser" data-toggle="modal" data-target="#exampleModal"
             data-whatever="@mdo"> <i class="fa fa-plus" aria-hidden="true">Agregar Cliente</i></button>
-        </div>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                      <h2 class="col-sm-4"><i>Modulo de clientes</i></h2>
-                    </dl>
-                  </dd>            
+        </div>          
         <table class="table table-bordered" id="customerTable">            
             <thead>                
                 <tr>

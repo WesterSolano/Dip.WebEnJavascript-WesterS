@@ -58,7 +58,7 @@ function deleteCustomer(button, customerId) {
 
         swal({
             title: "Are you sure ?",
-            text: "You want to delete user: " + customerId,
+            text: "Do you want to delete customer: " + customerId,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -69,7 +69,7 @@ function deleteCustomer(button, customerId) {
                     CallApi(`${url}/${customerId}`, "DELETE", {})
                         .then(() => window.location.reload())
 
-                    swal("User was deleted successfully", {
+                    swal("Customer was deleted successfully", {
                         icon: "success",
                     });
 
@@ -113,7 +113,6 @@ function saveCustomer(event)
 
             }
         })
-
 }
 
 function updateCustomer()
@@ -153,6 +152,8 @@ function cleanForm(event){
     inputs["apellido"].value =null,
     inputs["correo"].value=null,
     inputs["direccion"].value =null
+
+    //window.location.reload();
 }
 
 //Save customer in button click
@@ -179,7 +180,6 @@ function CallApi(url, method, data) {
             headers: header,
             body: JSON.stringify(data)
         }
-
     }
 
     return fetch(url, config).then(response => {
