@@ -20,25 +20,18 @@
   ],
   "customers": [
     {
-      "id": 2,
-      "firtName": "Lucilia",
-      "lastName": "Cambden",
-      "email": "lcambden1@simplemachines.org",
-      "customerAddress": "2 Coleman Road"
-    },
-    {
       "id": 4,
-      "firtName": "Nedi",
-      "lastName": "McAvaddy",
-      "email": "nmcavaddy3@1und1.de",
-      "customerAddress": "396 Tony Court"
+      "firtName": "Kiki",
+      "lastName": "Perez",
+      "email": "bautista@jose.com",
+      "customerAddress": "Los proceres"
     },
     {
       "id": 5,
-      "firtName": "Meriel",
-      "lastName": "Tillot",
-      "email": "mtillot4@indiegogo.com",
-      "customerAddress": "3318 Barby Road"
+      "firtName": "undefined",
+      "lastName": "undefined",
+      "email": "mvolq@gmail.com",
+      "customerAddress": "undefined"
     },
     {
       "id": 6,
@@ -88,13 +81,6 @@
       "lastName": "Fulbrook",
       "email": "pfulbrookc@imgur.com",
       "customerAddress": "147 Chive Road"
-    },
-    {
-      "id": 14,
-      "firtName": "Glynda",
-      "lastName": "Snellman",
-      "email": "gsnellmand@edublogs.org",
-      "customerAddress": "7317 Pennsylvania Way"
     },
     {
       "id": 15,
@@ -186,6 +172,27 @@
       "email": "test@gmail.com",
       "customerAddress": "test",
       "id": 28
+    },
+    {
+      "firtName": "Noridis",
+      "lastName": "McAvaddy",
+      "email": "nmcavaddy3@1und1.de",
+      "customerAddress": "396 Tony Court",
+      "id": 29
+    },
+    {
+      "firtName": "Meriel2",
+      "lastName": "Tillot2",
+      "email": "mtillot4@indiegogo.com",
+      "customerAddress": "3318 Barby Road",
+      "id": 30
+    },
+    {
+      "firtName": "Partron",
+      "lastName": "test1",
+      "email": "bautista@jose.com",
+      "customerAddress": "Calle 3ra # 4, El Portal, D.N.",
+      "id": 31
     }
   ]
 }

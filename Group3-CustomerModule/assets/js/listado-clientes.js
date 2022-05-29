@@ -16,7 +16,8 @@ $(document).ready(function () {
             clearFormModal()
 
         }
-        else if (elementId === "btnUpdate") {
+        else if (elementId === "btnUpdate") 
+        {
 
             btnUpdate.value = "update"
             clearFormModal()
@@ -27,32 +28,32 @@ $(document).ready(function () {
             console.log("Modificando cliente " + customerId)
 
             //Populate customer edit Form
-            getCustomerById(userId)
+            getCustomerById(customerId)
         }
-
     })
 
     const btnUpdate = document.getElementById("btnSubmit");
+
     btnUpdate.addEventListener("click", function () 
     {
         let action = btnUpdate.value;
 
-        const customerId = document.getElementById("id").value
-        const firtName = document.getElementById("nombre").value
-        const lastName = document.getElementById("apellido").value
-        const email = document.getElementById("correo").value
-        const customerAddress = document.getElementById("direccion").value
+        const idCliente = document.getElementById("id").value
+        const nombre = document.getElementById("nombre").value
+        const apellido = document.getElementById("apellido").value
+        const correo = document.getElementById("correo").value
+        const direccion= document.getElementById("direccion").value
 
 
         if (action === "update") {
 
             //Create object here...
             const customer = {
-                id: customerId,
-                nombre: firtName,
-                apellido: lastName,
-                correo: email,
-                direccion: customerAddress
+                id : idCliente,
+                firtName: nombre,
+                lastName: apellido,
+                email: correo,
+                customerAddress: direccion
             }
             console.log("Update customer Object:")
             console.log(customer)
@@ -62,31 +63,33 @@ $(document).ready(function () {
 
             //Refresh List
             
-            getAllCustomers()
+            getAllCustomers();
 
             $('#exampleModal').modal('toggle');
 
         }
-        /*else if (action === "new") {
+        else if (action === "new") {
             //Call new here...
             //Create object here...
 
-            if (firtName && lastName && email) {
-                const customer = {
-                    nombre: firtName,
-                    apellido: lastName,
-                    correo: email
+            if (nombre && apellido && correo && direccion) {
+                const customer = 
+                {
+                    firtName: nombre,
+                    lastName: apellido,
+                    email: correo,
+                    customerAddress: direccion
                 }
                 saveCustomer(customer) //--to be checked----
-                getAllCustomers();
+                //getAllCustomers();
                 $('#exampleModal').modal('toggle');
             }
             else {
                 
-               alert("Fields are null or empty")
+               alert("Debe completar todos los campos.")
 
             }
-        }*/
+        }
     })
     
 
@@ -95,17 +98,18 @@ $(document).ready(function () {
 
 function getAllCustomers() {
     CallApi(url, "GET", {}).then(promiseCustomers => {
-        promiseCustomers.forEach(customers => {
-            //$('#customerTable1 tr[class=autoRow]').remove()
+        
+        $('#customerTable tr[class=autoRow]').remove()
 
+        promiseCustomers.forEach(customers => {
             const data = `<tr class="autoRow">
-            <th scope="row">${customers.id}</th>
-            <td>${customers.firtName}</td>
+            <th scope="row" class="register-id">${customers.id}</th>
+            <td class="register-customerName">${customers.firtName}</td>
             <td>${customers.lastName}</td>
             <td>${customers.email}</td>
             <td>${customers.customerAddress}</td>
             <td>
-               <button type="button" class="btn btn-primary" value="${customers.id}" id="btnUpdate${customers.id}" data-toggle="modal" data-target="#exampleModal" data-whatever="${customers.id}" ><i class="fas fa-edit"></i></button>
+               <button type="button" class="btn btn-primary" value="${customers.id}" id="btnUpdate" data-toggle="modal" data-target="#exampleModal" data-whatever="${customers.id}" ><i class="fas fa-edit"></i></button>
                <button type="button" class="btn btn-danger" value="${customers.id}"  id="btnDelete${customers.id}"><i class="far fa-trash-alt"></i></button>
             </td>
        </tr>`
@@ -162,7 +166,7 @@ function deleteCustomer(button, customerId) {
 
         swal({
             title: "Are you sure ?",
-            text: "You want to delete user: " + customerId,
+            text: "You want to delete customer: " + customerId,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -186,32 +190,37 @@ function deleteCustomer(button, customerId) {
 }
 
 
-function saveCustomer(event)
+function saveCustomer(customer)
 {
-    event.preventDefault();
+    /*event.preventDefault();
     const inputs = event.target.elements;
     const cliente = {
         firtName: inputs["nombre"].value,
         lastName: inputs["apellido"].value,
         email: inputs["correo"].value,
         customerAddress: inputs["direccion"].value,
-    }
+    }*/
 
-    
-    swal({
-        title: "Cliente guardado!",
-        text: "El cliente: " + cliente.firtName +" fue registrado Exitosamente!",
-        icon: "success",
-    })
-        .then((willDelete) => {
-            if (willDelete) {
-
-                CallApi(url,"POST",cliente)
-                
-            } else {
-
-            }
+    if (!validateTableCustomerName(customer.firtName)) {
+        swal({
+            title: "Cliente guardado!",
+            text: "El cliente: " + customer.firtName +" fue registrado Exitosamente!",
+            icon: "success",
         })
+            .then((willDelete) => {
+                if (willDelete) {
+    
+                    CallApi(url,"POST",customer)
+                    getAllCustomers();
+                } else {
+    
+                }
+            })
+    }   
+    else 
+    {
+        alert(`Este nombre de cliente ${customer.firtName} existe`)
+    }
 }
 
 /*function updateCustomer1()
@@ -238,17 +247,23 @@ function updateCustomer(customer) {
     })
 }
 
-function clearFormModal(event){
-    const inputs = event.target.elements
+function clearFormModal(){
+    /*const inputs = event.target.elements
     inputs["nombre"].value ="",
     inputs["apellido"].value =null,
     inputs["correo"].value=null,
-    inputs["direccion"].value =null
+    inputs["direccion"].value =null*/
+
+    document.getElementById("id").value = "";
+    document.getElementById("nombre").value = "";
+    document.getElementById("apellido").value = "";
+    document.getElementById("correo").value = "";
+    document.getElementById("direccion").value = "";
 }
 
 //Save customer in button click
-customerForm.addEventListener("submit",saveCustomer)
-customerForm.addEventListener("submit",clearFormModal)
+//customerForm.addEventListener("click",saveCustomer)
+//customerForm.addEventListener("submit",clearFormModal)
 
 
 function CallApi(url, method, data) {
@@ -276,4 +291,30 @@ function CallApi(url, method, data) {
     return fetch(url, config).then(response => {
         return response.json()
     })
+}
+
+
+function validateTableCustomerName(customerName) {
+    let alreadyExist = false
+
+    let table = document.querySelectorAll("#customerTable td.register-customerName");
+
+    for (const iterator of table) {
+        let currentCustomerName = iterator.innerHTML;
+
+        console.log("Current customer name: " + currentCustomerName);
+        console.log("Parameter customer name: " + customerName);
+
+        if (currentCustomerName == customerName) {
+            alreadyExist = true;
+            break;
+        }
+        else {
+            alreadyExist = false
+            continue;
+        }
+    }
+
+    console.log("Customer Name already Exist? " + alreadyExist)
+    return alreadyExist
 }
